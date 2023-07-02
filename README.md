@@ -12,81 +12,197 @@ Hey there! This is a guide on how to configure osTicket, an open-source help des
 - ### [How To Configure osTicket, post-installation](https://drive.google.com/file/d/1dFvXN6I8EnOFGr2uQspMP-gzzkNG1OoA/view?usp=sharing)
 
 <h2>Environments and Technologies Used</h2>
-Microsoft Azure (Virtual Machines/Compute)
-Remote Desktop
-Internet Information Services (IIS)
-osTicket Documentation
-<h2>Operating Systems Used</h2>
-Windows 10 (21H2)
-<h2>Post-Install Configuration Objectives</h2>
-Let's take a look at the objectives we'll cover during the configuration:
 
+- Microsoft Azure (Virtual Machines/Compute)
+- Remote Desktop
+- Internet Information Services (IIS)
+- [osTicket Documentation](https://docs.osticket.com/en/latest/index.html)
+
+<h2>Operating Systems Used </h2>
+
+- Windows 10</b> (21H2)
+
+
+<h2>Post-Install Configuration Objectives</h2>
 Create and Configure Roles
 Create and Configure Departments & Teams
 Create and Configure Agents (workers) & Users (clients)
-Configure SLA (Service Learning Agreements)
+Configure SLA (Service Level Agreements)
 Configure Help Desk Topics
 <h2>Configuration Steps</h2>
 <h3>&#9312; Prerequisites and Installation</h3>
-Before we begin, please ensure that you have set up a virtual machine and installed the prerequisite files for osTicket. You can find the necessary credentials and configurations in the "Prerequisites and Installation" guide. Let's get started!
+This demonstration assumes a virtual machine is established with the prerequisite files installed for working osTicket. </br>
+Credentials and configurations that will be used in this demonstration can be found in "Prerequisites and Installation". </br>
 
 <hr>
 <h3>&#9313; Admin Panel - Roles, Departments, Teams, & Agents</h3>
-To begin the configuration, open the Microsoft Edge web browser and navigate to the Help Desk Login Page. Sign in using your osTicket Help Desk credentials (for example, username ostuser / ostuser@email.com).
-
+On the web browser (Microsoft Edge), go to the Help Desk Login Page and sign into your osTicket Help Desk credentials (this example uses username ostuser / ostuser@email.com).
 Help Desk Login Page -- http://localhost/osTicket/scp/login.php
 <p align=center>
 <img src="https://i.imgur.com/2NAyZo5.jpg" height="100%" width="=100%" alt="Disk Sanitization Steps"/>
 </p>
-Once you're on the Agent Panel, click on the "Admin Panel" option located at the top-right corner of the page.
-
+Currently at the Agent Panel, click on "Admin Panel" at the top-right of the page.
 <p align=center>
 <img src="https://i.imgur.com/dByQbR1.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-In the Admin Panel, go to the "Agents" tab and click on "Roles". Then, select "Add New Role".
-
+Click on the "Agents" tab > "Roles" > "Add New Role".
 <p align=center>
 <img src="https://i.imgur.com/mjTZZ5h.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-Roles are important as they determine the permissions granted to Agents based on the Departments they have access to. In the Definition tab, enter a name for the Role you want to create (let's use Supreme Admin in this example).
+"Roles are the permissions granted to Agents per Department that they have access to."
 
-This role will have all permissions.
-Next, navigate to the Permissions tab.
+In the Definition tab, type any Role name of your choice (this example uses Supreme Admin).
+This role will be given all permissions.
+Then, click on the Permissions tab.
 <p align=center>
 <img src="https://i.imgur.com/U8vxJEe.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-Under the Permissions tab, in the Tickets category, make sure to checkmark ALL boxes.
+In the Permissions tab, under the Tickets category, checkmark ALL boxes.
+Go through both Tasks and Knowledgebase categories and checkmark ALL boxes as well.
+Once done, click "Add Role".
+<p align=center>
+<img src="https://i.imgur.com/iJGy3L6.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Now we've created a Supreme Admin role with all permissions granted. Next, we'll create a Department.
 
-Remember to do the same for the Agent Tasks, Knowledgebase, Dashboard, and Configuration categories as well. This will give the Supreme Admin role full access to all features and functionalities.
+Currently in the Agents tab, click on the "Departments" category.
+Click "Add New Department".
+<p align=center>
+<img src="https://i.imgur.com/vdafrXs.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Create a Department name of your choice (this example uses System Administrators).
+Skip everything else for now and click "Create Dept".
+<p align=center>
+<img src="https://i.imgur.com/Uoji0y5.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Next, we'll move onto creating a Team. <br>
+"Teams allow you to pull Agents from different Departments and organize them to handle a specific issue or user via a Help Topic or Ticket Filter."
 
-Click on "Add Role" to save the new role.
+Currently in the Agents tab, click on the "Teams" category.
 
-Next, let's create departments and teams. In the Admin Panel, go to the "Agents" tab and click on "Departments". Then, select "Add New Department".
+Click "Add New Team".
+<p align=center>
+<img src="https://i.imgur.com/jmrWFse.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Create a Team name of your choice (this example uses Level II Support).
+Click "Create Team".
+<p align=center>
+<img src="https://i.imgur.com/JyzMjkp.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Currently in the Agents tab, click "Agents" category.
+<p align=center>
+<img src="https://i.imgur.com/zYQu22H.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Create the required credentials for this user that are in bold:
+First Name (this example uses Jane).
+Last Name (this example uses Doe).
+Email Address (this example uses jane.doe@osTicket.com).
+Username (this example uses jane.doe).
+Click "Set Password" and a windows prompt will appear:
+Uncheck "Send the agent a password reset email".
+Create a password for this user.
+Uncheck "Require password change at next login".
+Click "Set".
+<p align=center>
+<img src="https://i.imgur.com/LRAyfYp.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Click on the "Access" tab:
+Assign this user the Department that we created (this example uses System Administrators).
+Assign this user the Role that we created (this example uses Supreme Admin).
+Under Extended Access, assign this user the "Support" department with the "Supreme Admin" role.
+Click "Save Changes".
+<p align=center>
+<img src="https://i.imgur.com/NyCTS3W.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Click on the "Teams" tab:
+Assign this user the Team that we created (this example uses Level II Support).
+Once done, click "Create".
+<p align=center>
+<img src="https://i.imgur.com/WeM5SEd.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Create another Agent following the steps, however assign it to a different Role and Department.</br>
+This example creates Agent "John Doe" | Department: "Level I Support" | Role: "View only | Extended Access: Support".
 
-In the Department Creation form, provide a name for the department (e.g., "IT Support") and optionally, a description. Click on "Add Department" to save it.
+<p align=center>
+<img src="https://i.imgur.com/ACl29nn.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<hr>
+<h3>&#9314; Agent Panel - Creating Users</h3>
+Click on "Agent Panel" on the top-right of the page.
+<p align=center>
+<img src="https://i.imgur.com/A6lRMQN.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Click on the "Users" tab.
+Click on "Add User".
+Create an Email Address and Full Name for this user (this example uses karen@osticket.com / Karen Karen).
+Click "Add User".
+<p align=center>
+<img src="https://i.imgur.com/jTIRdhl.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/vn9DP8b.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-Now, let's create teams within the department. Under the department you just created, click on "Teams". Then, select "Add New Team".
+</p>
+Create another user of your choice (this example uses ken@osticket.com / Ken Ken)
 
-In the Team Creation form, provide a name for the team (e.g., "Level 1 Support") and select the department it belongs to. Click on "Add Team" to save it.
+<p align=center>
+<img src="https://i.imgur.com/H6Cgj0A.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<hr>
+<h3>&#9315; Admin Panel - Configuring SLA</h3>
+"SLA Plans or Service Level Agreements, are unlimited in osTicket. The purpose of the SLA Plan is to provide a length of time in which the help desk Administrator expects tickets to be closed."
 
-Next, let's create agents (workers) and users (clients). In the Admin Panel, go to the "Agents" tab and click on "Add New Agent".
+Return to the "Admin Panel".
+Navigate to "Manage" tab > "SLA".
+Click "Add New SLA Plan".
+<p align=center>
+<img src="https://i.imgur.com/KSONgtH.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Create the following plans:
+SEV-A
 
-Fill in the Agent Creation form with the necessary details, including the agent's name, email address, and username. Assign the agent to the appropriate department and team. Set a password for the agent and select the role (e.g., "Supreme Admin") you created earlier. Click on "Create Agent" to save it.
+Grace Period: 1 hour (Amount, in hours, before tickets with this SLA will become overdue if not closed in allotted time.)
+Schedule: 24/7 (Accounted for all days of the week, even on non-business days)
+SEV-B
 
-To create users, navigate to the "Users" tab in the Admin Panel and click on "Add New User". Fill in the User Creation form with the required details, including the user's name, email address, and username. Set a password for the user and select the default role for clients. Click on "Create User" to save it.
+Grace Period: 4 hours
+Schedule: 24/7
+SEV-C
 
-<h3>&#9314; SLA Configuration</h3>
-In the Admin Panel, go to the "Tickets" tab and click on "SLA". Then, select "Add New SLA Plan".
+Grace Period: 8 hours
+Schedule: Monday - Friday 8am - 5pm with U.S. Holidays
+Click "Add Plan" for each.
+<p align=center>
+<img src="https://i.imgur.com/biqgLPr.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/vLW1yZs.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<hr>
+<h3>&#9316; Configure Help Topics</h3>
+Help Topics will help streamline your end-user’s help desk experience to ensure proper assignment and prompt response to the ticket.
 
-Provide a name for the SLA plan (e.g., "Standard SLA") and configure the various settings, such as response time, resolution time, and escalation rules. Customize the SLA rules based on your organization's requirements. Click on "Create SLA" to save it.
+Currently in the Admin Panel, navigate to "Manage" tab > "Help Topics".
+Click "Add New Help Topic".
+<p align=center>
+<img src="https://i.imgur.com/cYxBbIu.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+Create Help Topics with the following names:
+Business Critical Outage
+Personal Computer Issues
+Equipment Request
+Password Reset
+"Internal Notes" can be written down for personal use, but not necessary.
+After that, click "Add Topic".
+<p align=center>
+<img src="https://i.imgur.com/8u6QJRG.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/wVf8qYz.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<hr>
+<h1><p align=center>All Done</p></h1>
 
-<h3>&#9315; Help Desk Topics Configuration</h3>
-In the Admin Panel, go to the "Tickets" tab and click on "Topics". Then, select "Add New Topic".
+<h2><p align=center>Next Demonstration:<br><a href="h">Ticket Lifecycle Examples</a></p></h2>
 
-Provide a name for the topic (e.g., "Technical Support") and optionally, a description. Configure other settings as needed, such as the priority and whether the topic is public or private. Click on "Create Topic" to save it.
 
-That's it! You have successfully completed the post-install configuration steps for osTicket. You can continue customizing and fine-tuning the system based on your organization's specific requirements.
 
-Remember to refer to the official osTicket documentation for more detailed information and guidance.
 
-I hope this helps! Let me know if you have any further questions.
+
+
+
+
